@@ -16,7 +16,12 @@
         {% endblock %}
     </head>
     <body>
+
+        {# Navbar #}
         {% include 'navbar.html.twig' %}
+
+        <h1 class="border border-dark bg-primary rounded p-2 m-2 text-white">{% block monTitre %}{% endblock %}</h1>
+
         {% block body %}{% endblock %}
     </body>
 </html>
