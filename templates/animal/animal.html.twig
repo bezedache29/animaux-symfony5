@@ -10,18 +10,26 @@
         <div class="col-6 text-center">
             <img src="{{ asset('images/' ~ animal.image) }}" alt="Image {{ animal.nom }}">
         </div>
-        <div class="col-6">
-            <ul>
-                <li>{{ animal.nom }}</li>
-                <li>{{ animal.description }}</li>
-                <li>Poids : {{ animal.poids }} kg</li>
+        <div class="col-3">
+            <div class="list-group">
+                <p>Nom : {{ animal.nom }}</p>
+                <p>Description : {{ animal.description }}</p>
+                <p>Poids : {{ animal.poids }} kg</p>
                 {% if (animal.dangereux) %}
-                <li>Dangeureux : <span class="badge rounded-pill bg-danger">Oui</span></li>
+                    <p>Dangeureux : <span class="badge rounded-pill bg-danger">Oui</span></p>
                 {% else %}
-                <li>Dangeureux : <span class="badge rounded-pill bg-success">Non</span></li>
+                    <p>Dangeureux : <span class="badge rounded-pill bg-success">Non</span></p>
                 {% endif %}
-                <li><a href="{{ path('famille', {id: animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a></li>
-            </ul>
+                <div>
+                    <a href="{{ path('famille', {id: animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a>
+                </div>
+                <h5 class="my-2">Présence de l'animal sur les continents :</h5>
+                <div>
+                    {% for continent in animal.continents %}
+                        <a href="{{ path('continent', {id: continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 

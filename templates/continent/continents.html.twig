@@ -1,0 +1,48 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des continents{% endblock %}
+
+{% block monTitre %}Liste des continents{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5">
+
+        {% for continent in continents %}
+
+            <h2 class="border-bottom border-primary mt-5"><a style="text-decoration:none;" href="{{ path('continent', {id: continent.id}) }}">{{ continent.libelle }}</a></h2>
+
+            <div class="row gx-0 align-items-center">
+                {% for animal in continent.animaux %}
+                    <div class="col-6 my-3">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-6 col-lg-2 text-center">
+                                <img src="{{ asset('images/' ~ animal.image) }}" alt="image {{ animal.nom }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6  my-3">
+                        <div class="list-group">
+                            <h2 class="m-0"><a href="{{ path('animal', {id: animal.id}) }}">{{ animal.nom }}</a></h2>
+                            <p class="m-0">Description : {{ animal.description }}</p>
+                            <div>
+                                <a href="{{ path('famille', {id: animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a>
+                            </div>
+                            <h5 class="my-2 mt-3">Présence de l'animal sur les continents :</h5>
+                            <div>
+                                {% for continent in animal.continents %}
+                                    <a href="{{ path('continent', {id: continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    
+
+{% endblock %}
