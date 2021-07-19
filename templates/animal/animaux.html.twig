@@ -1,4 +1,6 @@
-{% extends 'animal/template.html.twig' %}
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des animaux{% endblock %}
 
 {% block monTitre %}Liste des animaux{% endblock %}
 
@@ -17,6 +19,7 @@
                     <p class="card-text">{{ animal.description }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="{{ path('famille', {id: animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a></li>
                     <li class="list-group-item"><a href="{{ path('animal', {id: animal.id}) }}" class="card-link">Voir détails</a></li>
                 </ul>
             </div>

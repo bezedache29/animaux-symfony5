@@ -1,0 +1,59 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des familles{% endblock %}
+
+{% block monTitre %}Liste des familles{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for famille in familles %}
+                    <tr class="table-light">
+                        <th scope="row">{{ famille.id }}</th>
+                        <td>{{ famille.libelle|capitalize }}</td>
+                        <td>{{ famille.description }}</td>
+                        <td class="text-center"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal{{ famille.id }}">Voir les animaux</a></td>
+                    </tr>
+
+                    <div class="modal fade" id="exampleModal{{ famille.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ famille.libelle|upper }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body row gx-0">
+                                    {% for animal in famille.animaux %}
+                                        <div class="w-50">
+                                            <div class="text-center">
+                                                <img style="height: 150px;" src="{{ asset('images/' ~ animal.image) }}" alt="">
+                                            </div>
+                                            <h2 class="text-center my-2"><a class="text-primary" href="{{ path('animal', {id: animal.id}) }}">{{ animal.nom }}</a></h2>
+                                            <p class="text-center m-0">{{ animal.description }}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}
