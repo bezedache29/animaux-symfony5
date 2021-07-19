@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Animal;
+use App\Entity\Famille;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -10,12 +11,30 @@ class AnimalFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        // Familles
+        $c1 = new Famille();
+        $c1->setLibelle('mammifères');
+        $c1->setDescription('Animaux vertébrés nourissent leurs petits avec du lait');
+        $manager->persist($c1);
+
+        $c2 = new Famille();
+        $c2->setLibelle('reptiles');
+        $c2->setDescription('Animaux vertébrés qui rampent');
+        $manager->persist($c2);
+
+        $c3 = new Famille();
+        $c3->setLibelle('poissons');
+        $c3->setDescription('Animaux invertébrés du monde aquatique');
+        $manager->persist($c3);
+
+        // Animaux
         $a1 = new Animal();
         $a1->setNom('Chien')
             ->setDescription('Un animal domestique')
             ->setImage('chien.png')
             ->setPoids(10)
             ->setDangereux(false)
+            ->setFamille($c1);
         ;
         $manager->persist($a1);
 
@@ -25,6 +44,7 @@ class AnimalFixtures extends Fixture
             ->setImage('cochon.png')
             ->setPoids(150)
             ->setDangereux(false)
+            ->setFamille($c1);
         ;
         $manager->persist($a2);
 
@@ -34,6 +54,7 @@ class AnimalFixtures extends Fixture
             ->setImage('serpent.png')
             ->setPoids(3)
             ->setDangereux(true)
+            ->setFamille($c2);
         ;
         $manager->persist($a3);
 
@@ -43,6 +64,7 @@ class AnimalFixtures extends Fixture
             ->setImage('crocodile.png')
             ->setPoids(80)
             ->setDangereux(true)
+            ->setFamille($c2);
         ;
         $manager->persist($a4);
 
@@ -52,6 +74,7 @@ class AnimalFixtures extends Fixture
             ->setImage('requin.png')
             ->setPoids(800)
             ->setDangereux(true)
+            ->setFamille($c3);
         ;
         $manager->persist($a5);
 
