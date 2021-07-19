@@ -20,6 +20,7 @@
                 {% else %}
                 <li>Dangeureux : <span class="badge rounded-pill bg-success">Non</span></li>
                 {% endif %}
+                <li><a href="{{ path('famille', {id: animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a></li>
             </ul>
         </div>
     </div>

@@ -8,14 +8,14 @@
 
     <h2 class="text-center my-3">{{ famille.description }}</h2>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center gx-0">
 
         {% for animal in famille.animaux %}
-            <div class="col-4">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="card text-white bg-primary m-2">
                     <h3 class="card-header">{{ animal.nom}}</h3>
                     <div class="card-body text-center">
-                        <img style="height: 150px;" src="{{ asset('images/' ~ animal.image) }}" alt="image {{ animal.nom }}">
+                        <img style="height: 150px;" class="img-fluid" src="{{ asset('images/' ~ animal.image) }}" alt="image {{ animal.nom }}">
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ animal.description }}</p>
