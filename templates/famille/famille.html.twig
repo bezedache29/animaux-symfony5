@@ -6,6 +6,27 @@
 
 {% block content %}
 
-    <p>Détails de la famille</p>
+    <h2 class="text-center my-3">{{ famille.description }}</h2>
+
+    <div class="row justify-content-center">
+
+        {% for animal in famille.animaux %}
+            <div class="col-4">
+                <div class="card text-white bg-primary m-2">
+                    <h3 class="card-header">{{ animal.nom}}</h3>
+                    <div class="card-body text-center">
+                        <img style="height: 150px;" src="{{ asset('images/' ~ animal.image) }}" alt="image {{ animal.nom }}">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ animal.description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="{{ path('animal', {id: animal.id}) }}" class="card-link">Voir détails</a></li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
 
 {% endblock %}

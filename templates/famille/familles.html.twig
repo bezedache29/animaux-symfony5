@@ -14,7 +14,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Libellé</th>
                     <th scope="col">Description</th>
-                    <th scope="col" class="text-center">Action</th>
+                    <th scope="col" colspan="2" class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +23,7 @@
                         <th scope="row">{{ famille.id }}</th>
                         <td>{{ famille.libelle|capitalize }}</td>
                         <td>{{ famille.description }}</td>
+                        <td class="text-center"><a href="{{ path('famille', {id: famille.id}) }}">Détails famille</a></td>
                         <td class="text-center"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal{{ famille.id }}">Voir les animaux</a></td>
                     </tr>
 
