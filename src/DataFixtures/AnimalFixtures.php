@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Animal;
 use App\Entity\Famille;
+use App\Entity\Continent;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -77,6 +78,41 @@ class AnimalFixtures extends Fixture
             ->setFamille($c3);
         ;
         $manager->persist($a5);
+
+        //Continents
+        $c1 = new Continent();
+        $c1->setLibelle('Europe');
+        $c1->addAnimaux($a1);
+        $c1->addAnimaux($a2);
+        $manager->persist($c1);
+
+        $c2 = new Continent();
+        $c2->setLibelle('Asie');
+        $c2->addAnimaux($a1);
+        $c2->addAnimaux($a3);
+        $manager->persist($c2);
+
+        $c3 = new Continent();
+        $c3->setLibelle('Afrique');
+        $c3->addAnimaux($a1);
+        $c3->addAnimaux($a3);
+        $c3->addAnimaux($a4);
+        $manager->persist($c3);
+
+        $c4 = new Continent();
+        $c4->setLibelle('Océanie');
+        $c4->addAnimaux($a1);
+        $c4->addAnimaux($a3);
+        $c4->addAnimaux($a4);
+        $c4->addAnimaux($a5);
+        $manager->persist($c4);
+
+        $c5 = new Continent();
+        $c5->setLibelle('Amérique');
+        $c5->addAnimaux($a1);
+        $c5->addAnimaux($a2);
+        $c5->addAnimaux($a5);
+        $manager->persist($c5);
 
         $manager->flush();
     }
