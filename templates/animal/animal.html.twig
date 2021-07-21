@@ -26,7 +26,7 @@
                 <h5 class="my-2">Présence de l'animal sur les continents :</h5>
                 <div>
                     {% for continent in animal.continents %}
-                        <a href="{{ path('continent', {id: continent.id}) }}" class="btn btn-warning">{{ continent.libelle }}</a>
+                        <a href="{{ path('continent', {id: continent.id}) }}" class="btn btn-warning mb-1">{{ continent.libelle }}</a>
                     {% endfor %}
                 </div>
             </div>

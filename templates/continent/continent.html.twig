@@ -27,7 +27,7 @@
                             <div>
                                 {% for c in animal.continents %}
                                     {% if (c.id != continent.id) %}
-                                        <a href="{{ path('continent', {id: c.id}) }}" class="btn btn-warning">{{ c.libelle }}</a>
+                                        <a href="{{ path('continent', {id: c.id}) }}" class="btn btn-warning mb-1">{{ c.libelle }}</a>
                                     {% endif %}
                                 {% endfor %}
                             </div>
