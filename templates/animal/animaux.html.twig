@@ -21,9 +21,15 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><a href="{{ path('famille', {id: animal.famille.id}) }}" class="btn btn-primary">{{ animal.famille.libelle }}</a></li>
                     <li class="list-group-item">
-                        <p class="mb-1 fs-4">Présence de l'animal sur les continents :</p>
+                        <p class="mb-1 fs-5">Présence de l'animal sur les continents :</p>
                         {% for continent in animal.continents %}
                             <a href="{{ path('continent', {id: continent.id}) }}" class="btn btn-warning my-1">{{ continent.libelle }}</a>
+                        {% endfor %}
+                    </li>
+                    <li class="list-group-item">
+                        <p class="mb-1 fs-5">Personnes possédant ces animaux :</p>
+                        {% for dispose in animal.disposes %}
+                            <a href="{{ path('personne', {id: dispose.personne.id}) }}" class="btn btn-info my-1">{{ dispose.personne.nom }}</a>
                         {% endfor %}
                     </li>
                     <li class="list-group-item"><a href="{{ path('animal', {id: animal.id}) }}" class="card-link">Voir détails</a></li>
